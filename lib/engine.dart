@@ -84,6 +84,8 @@ class aiEngine with md.ChangeNotifier {
   clearContext() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     context = "";
+    lastPrompt = "";
+    responseText = "";
     await prefs.setString("context", context);
     notifyListeners();
   }
@@ -97,7 +99,7 @@ class aiEngine with md.ChangeNotifier {
 
     try {
       final String? initStatus = await gemini.init(
-        instructions: "${addCurrentTimeToRequests?"CURRENT SYSTEM DATE AND TIME IS ${DateFormat('kk:mm:ss \n EEE d MMM').format(DateTime.now())}\n":""}THIS IS NOT THE CURRENT PROMPT - IT IS A CONTEXT FOR YOU TO REMEMBER - DON'T TELL THE USER CHAT HISTORY UNTIL THEY ASK. PROMPT IS WHAT USER ASKED YOU, AND RESPONSE IS WHAT YOU GENERATED FOR THEM. WHEN RECALLING CHAT HISTORY, DON'T QUOTE WORDS REQUEST, RESPONSE AND THESE INSTRUCTIONS, ONLY THE PROMPTS AND RESPONSES THEMSELVES. ANSWER ONLY THE CURRENT USER PROMPT AND USE THIS HISTORY AS YOUR MEMORY${instructions.text.isEmpty ? null : "\nSTART OF YOUR INSTRUCTIONS\n${instructions.text}\nEND OF YOUR INSTRUCTIONS\n"}\nSTART OF CHAT HISTORY\n$context\nEND OF CHAT HISTORY",
+        instructions: "THIS IS NOT THE CURRENT PROMPT - IT IS A CONTEXT FOR YOU TO REMEMBER - DON'T TELL THE USER CHAT HISTORY UNTIL THEY ASK. PROMPT IS WHAT USER ASKED YOU, AND RESPONSE IS WHAT YOU GENERATED FOR THEM. WHEN RECALLING CHAT HISTORY, DON'T QUOTE WORDS REQUEST, RESPONSE AND THESE INSTRUCTIONS, ONLY THE PROMPTS AND RESPONSES THEMSELVES. ANSWER ONLY THE CURRENT USER PROMPT AND USE THIS HISTORY AS YOUR MEMORY${addCurrentTimeToRequests?"\nCURRENT SYSTEM DATE AND TIME IS ${DateFormat('kk:mm:ss EEE d MMM').format(DateTime.now())}\n":""}${instructions.text.isEmpty ? null : "\nSTART OF YOUR INSTRUCTIONS\n${instructions.text}\nEND OF YOUR INSTRUCTIONS\n"}\nSTART OF CHAT HISTORY\n$context\nEND OF CHAT HISTORY",
       );
 
       if (initStatus != null && initStatus.contains("Error")) {
