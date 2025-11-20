@@ -6,7 +6,7 @@
   "unavailable": "is unavailable",
   "available": "is available",
   "title": "Gemini Nano",
-  "welcome_unavailable": "Unfortunately either your device doesn't support Gemini Nano or the Google AICore is unavailable to the app.\nFor more information check additional resources.\n\nI wasn't able to exclude unsupported devices beause the list changes, sorry if I disappointed you.",
+  "welcome_unavailable": "Unfortunately either your device doesn't support Gemini Nano or the Google AICore is unavailable to the app.\nFor more information check additional resources.\n\nI wasn't able to exclude unsupported devices beause of list changes, sorry if I disappointed you.",
   "welcome_download": "Gemini Nano is being downloaded by AI Core now, afterwards you will be able to use it offline. Usually the model size is around %size%, but it depends on device and model version.\nThe AI Core will manage and update the model in background after downloading it. Downloading requires WiFi.",
   "model_available": "You have access to %s model",
   "welcome_available": "Currently, Gemini Nano is offered in alpha version and there is a limit of tokens per minute. It may break or produce unexpected results. Please report any issues you encounter on the GitHub repository and remember that AI may make mistakes. Content AI generates does not reflect opinion of the app developer or Google.",
