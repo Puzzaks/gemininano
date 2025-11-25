@@ -110,7 +110,7 @@ class ChatsPageState extends State<ChatsPage> {
                                       title: chat["name"]??"Loading...",
                                       subtitle: formatDurationToShortString(DateTime.now(), DateTime.fromMillisecondsSinceEpoch(int.parse(chat["updated"]))) == "just now"
                                         ? engine.dict.value("just_now")
-                                        : engine.dict.value(formatDurationToShortString(DateTime.now(), DateTime.fromMillisecondsSinceEpoch(int.parse(chat["updated"]))).split(" ")[0]).replaceAll("%time%", formatDurationToShortString(DateTime.now(), DateTime.fromMillisecondsSinceEpoch(int.parse(chat["updated"]))).split(" ")[1]),
+                                        : engine.dict.value(formatDurationToShortString(DateTime.now(), DateTime.fromMillisecondsSinceEpoch(int.parse(chat["updated"]))).split(" ")[1]).replaceAll("%time%", formatDurationToShortString(DateTime.now(), DateTime.fromMillisecondsSinceEpoch(int.parse(chat["updated"]))).split(" ")[0]),
                                       action: () async {
                                         print("I have chats: ${engine.chats.keys}");
                                         engine.isLoading = false;
