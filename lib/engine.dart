@@ -260,6 +260,7 @@ class AIEngine with md.ChangeNotifier {
 
   Future generateTitle (String input) async {
     ignoreContext = true;
+    String newTitle = "Getting description";
     await gemini.init().then((initStatus) async {
       ignoreContext = false;
       if (initStatus == null) {
@@ -272,11 +273,13 @@ class AIEngine with md.ChangeNotifier {
             prompt: "Summarize the text in one sentence.\nRespond in under 7 words.\nDon't add any prefix like \"The text is about\".\nSimply answer the question \"What this text is about\" in the shortest correct way possible.\nDon't provide any answer to the contents of the text, just summarize it.\n\n<TEXT STARTS HERE>\n$input\n<TEXT ENDS HERE>",
             config: GenerationConfig(maxTokens: 250, temperature: 0.7),
           ).then((title){
-            return title;
+            newTitle = title;
           });
         }
       }
     });
+    print("Returning the $newTitle");
+    return newTitle;
   }
 
   saveChat(List conversation, {String chatID = "0"}) async {
@@ -296,7 +299,10 @@ class AIEngine with md.ChangeNotifier {
         chats[chatID]!["updated"] =  DateTime.now().millisecondsSinceEpoch.toString();
       }else{
         await Future.delayed(Duration(milliseconds: 500)); /// We have to wait some time because summarizing immediately will always result in overflowing the quota for some reason
-        String newTitle = await generateTitle(lastPrompt.trim());
+        String newTitle = "Still loading";
+        await generateTitle(lastPrompt.trim()).then((result){
+          newTitle = result;
+        });
         print("And new title is... $newTitle");
         chats[chatID] = {
           "name": newTitle,
