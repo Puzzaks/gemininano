@@ -1,5 +1,5 @@
 # Gemini Nano
-##### Run Gemini Nano 100% offline. A powerful, private, & open-source AI interface.
+#### Run Gemini Nano 100% offline. A powerful open-source AI interface.
 ![Play Store Screenshots](.assets/bundle_android.jpg)
 ![Play Store Screenshots](.assets/bundle_tablet.jpg)
 A 100% offline, private, and powerful interface for Google's Gemini Nano.
@@ -10,6 +10,7 @@ A 100% offline, private, and powerful interface for Google's Gemini Nano.
 ### Features
  - 100% Offline & Private
  - Full Model Control
+ - Multiple chats!
  - Custom Instructions
  - Context-Aware
  - Total Transparency
@@ -19,12 +20,14 @@ A 100% offline, private, and powerful interface for Google's Gemini Nano.
 This app leverages local AI API. This means that your prompts and conversations should never leave your phone.
 The model this app uses runs entirely on-device using Google's AI Core. Your prompts are processed locally, and no data is ever sent to a server. What you ask Gemini Nano stays between you and your phone.
 
-
 #### Full Model Control
 You have full control over the model. Of course you cannot edit the System Prompt, but trust me, you don't want to play with it anyway. You can augment it by adding User Instructions that will be incorporated. You can also control the main parameters of the model:
  - Temperature: Control the creativity vs. coherence of the AI (0.0 = robotic, 1.0 = chaotic).
 - Max Response Tokens: Decide how much you want the AI to generate, from a short sentence to a longer paragraph.
 > The AI usually generates less than 75% of the requested context size. This happens because not every token is used, but each one is counted.
+> 
+#### Multiple chats!
+You now have ability to have multiple chats, each with own context. The global settings apply to each of them, but you can rename, pin, delete them at your will. The AI also can help you choose the name for the conversation!
 
 #### Custom Instructions
 You can use `[USER INSTRUCTIONS]` to steer the AI to do what you want. You can create custom personalities, set specific rules ("always answer in pirate"), or tailor the AI's behavior for your specific tasks.
